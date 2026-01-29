@@ -38,7 +38,6 @@ func TestNumberToThaiText(t *testing.T) {
 			expected: "หนึ่งร้อยเอ็ดบาทถ้วน",
 		},
 
-		// ---------- ล้าน ----------
 		{
 			name:     "one million",
 			input:    "1000000",
@@ -55,7 +54,6 @@ func TestNumberToThaiText(t *testing.T) {
 			expected: "หนึ่งร้อยล้านบาทถ้วน",
 		},
 
-		// ---------- พันล้าน ----------
 		{
 			name:     "one billion",
 			input:    "1000000000",
@@ -76,7 +74,7 @@ func TestNumberToThaiText(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			d := decimal.RequireFromString(tt.input)
-			result := numberToThaiText(d)
+			result := moneyToThaiText(d)
 
 			if result != tt.expected {
 				t.Errorf("input %s: expected %q, got %q",
